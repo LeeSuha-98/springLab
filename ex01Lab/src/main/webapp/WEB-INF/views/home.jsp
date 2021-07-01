@@ -9,6 +9,6 @@
 	Hello world!  
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<P>  The time on the server is ${serverTime}. </P> <!--모델에 넘어온 서브타입을 이렇게 표시-->
 </body>
 </html>
