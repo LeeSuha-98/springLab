@@ -32,7 +32,7 @@
 					</div>
 					<!-- /.box-header -->
 
-					<form role="form" method="post">
+					<form role="form" method="post">   <!--  role= host방식대로 요청하는 것 -->
 						<div class="box-body">
 							<div class="form-group">
 								<label for="exampleInputEmail1">Title</label> <input type="text"
