@@ -43,12 +43,18 @@
 			ref="sqlSessionFactory"></constructor-arg>
 	</bean>
 
+
+
+	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
 	<context:component-scan
 		base-package="org.zerock.persistence"></context:component-scan>
 	<context:component-scan
 		base-package="org.zerock.service"></context:component-scan>
-
-	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+	<context:component-scan
+		base-package="org.zerock.aop"></context:component-scan>
+	<aop:config>
+	</aop:config>
 	<!-- lab end -->
 
 

@@ -29,9 +29,9 @@ public class MessageServiceImpl implements MessageService {
   @Override
   public MessageVO readMessage(String uid, Integer mid) throws Exception {
 
-    messageDAO.updateState(mid);
+    messageDAO.updateState(mid); //읽은 카운트를 올림
 
-    pointDAO.updatePoint(uid, 5);
+    pointDAO.updatePoint(uid, 5); // 점수 5점을 줌
 
     return messageDAO.readMessage(mid);
   }
