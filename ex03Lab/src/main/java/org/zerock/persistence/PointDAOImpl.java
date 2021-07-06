@@ -17,7 +17,7 @@ public class PointDAOImpl implements PointDAO {
   private static String namespace = "org.zerock.mapper.PointMapper";
 
   @Override
-  public void updatePoint(String uid, int point) throws Exception {
+  public void updatePoint(String uid, int point) throws Exception { //유저 테이블에 업데이트함.
 
     Map<String, Object> paramMap = new HashMap<String, Object>();
     paramMap.put("uid", uid);
