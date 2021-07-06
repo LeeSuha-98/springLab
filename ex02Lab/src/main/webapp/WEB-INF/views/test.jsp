@@ -52,7 +52,7 @@
 		<div>
 			<button type="button" id="replyModBtn">Modify</button>
 			<button type="button" id="replyDelBtn">DELETE</button>
-			<button type="button" id='closeBtn'>Close</button>
+			<button type="button" id='closeBtn'>Close</button>  
 		</div>
 	</div>
 
@@ -71,6 +71,8 @@
 
 
 	<ul id="replies">
+	<li data-rno='1' class="replyLi">댓글1<button>MOD</button></li>
+	<li data-rno='2' class="replyLi">댓글1<button>MOD</button></li>
 	</ul>
 	
 	<ul class='pagination'>
@@ -91,7 +93,7 @@
 
 			$
 					.getJSON(
-							"/replies/all/" + bno,
+							"/replies/all/" + bno,  
 							function(data) {
 
 								//console.log(data.length);
@@ -114,8 +116,8 @@
 
 		$("#replyAddBtn").on("click", function() {
 
-			var replyer = $("#newReplyWriter").val();
-			var replytext = $("#newReplyText").val();
+			var replyer = $("#newReplyWriter").val(); //클릭하면 작성자를 replyer에 저장
+			var replytext = $("#newReplyText").val(); //클릭하면 내용을 replytext에 저장
 
 			$.ajax({
 				type : 'post',
@@ -178,6 +180,18 @@
 				}
 			});
 		});
+		
+		
+		
+		
+		$("#closeBtn").on("click", function() {
+			
+			$("#modDiv").hide("slow");
+
+		});
+		
+		
+		
 		
 		$("#replyModBtn").on("click",function(){
 			  
