@@ -27,13 +27,13 @@ public class SampleAdvice {
   }
   
   
-  @Around("execution(* org.zerock.service.MessageService*.*(..))")
+  @Around("execution(* org.zerock.service.MessageService*.*(..))") //모든 메소드 
   public Object timeLog(ProceedingJoinPoint pjp)throws Throwable{
 	long startTime = System.currentTimeMillis();
 	logger.info("=============================================");
     logger.info(Arrays.toString(pjp.getArgs())); //메세지vo 객체의 내용을 출력하라.
     
-    Object result = pjp.proceed();
+    Object result = pjp.proceed();  //addMessage
     
     long endTime = System.currentTimeMillis();
     logger.info( pjp.getSignature().getName()+ " : " + (endTime - startTime) );
