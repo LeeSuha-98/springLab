@@ -10,16 +10,16 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/*.xml" }) /* 컨테이너 만듦 */
+@ContextConfiguration(locations ={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class MyBatisTest {
 
-	@Inject  // = SqlSessionFactory를 주입시킨다
+	@Inject 
 	private SqlSessionFactory sqlFactory;
 	
 	@Test
 	public void testFactory(){
 		
-		System.out.println(sqlFactory); //객체가 출력이 된다
+		System.out.println(sqlFactory);
 		
 	}
 	

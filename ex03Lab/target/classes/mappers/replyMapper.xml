@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		tbl_reply
 		where bno =
 		#{bno}
-		order by rno 
+		order by rno desc
 	</select>
 
 	<insert id="create">
@@ -37,15 +37,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from
 		tbl_reply
 		where
-		bno = #{bno}
-		order by rno asc
+		bno =
+		#{bno}
+		order by rno desc
 		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 
 	<select id="count" resultType="int">
-		select count(bno) from tbl_reply where bno =#{bno}
+		select count(bno) from tbl_reply
+		where bno =#{bno}
 	</select>
 
+
+	<select id="getBno" resultType="int">
+		select bno from tbl_reply where rno = #{rno}
+	</select>
 
 </mapper>
 

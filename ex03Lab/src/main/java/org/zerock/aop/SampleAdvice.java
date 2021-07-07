@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
+// Aspect : °øÅë ±â´ÉÀÌ ÀÖ´Â °Í, Aspect Å¬·¡½º¸¦ ¸¸µê
 public class SampleAdvice {
 
   private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
@@ -27,13 +28,14 @@ public class SampleAdvice {
   }
   
   
-  @Around("execution(* org.zerock.service.MessageService*.*(..))") //ëª¨ë“  ë©”ì†Œë“œ 
+  @Around("execution(* org.zerock.service.MessageService*.*(..))")
+  // MessageService*.*(..) : MessageService °´Ã¼ÀÇ ¸ğµç ¸Ş¼Òµå¿¡ Àû¿ëÇÏ°Ú´Ù.
   public Object timeLog(ProceedingJoinPoint pjp)throws Throwable{
 	long startTime = System.currentTimeMillis();
 	logger.info("=============================================");
-    logger.info(Arrays.toString(pjp.getArgs())); //ë©”ì„¸ì§€vo ê°ì²´ì˜ ë‚´ìš©ì„ ì¶œë ¥í•˜ë¼.
+    logger.info(Arrays.toString(pjp.getArgs()));
     
-    Object result = pjp.proceed();  //addMessage
+    Object result = pjp.proceed();
     
     long endTime = System.currentTimeMillis();
     logger.info( pjp.getSignature().getName()+ " : " + (endTime - startTime) );
