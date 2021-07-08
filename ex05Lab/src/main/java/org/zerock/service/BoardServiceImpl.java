@@ -18,10 +18,27 @@ public class BoardServiceImpl implements BoardService {
   @Inject
   private BoardDAO dao;
 
+  
+  @Transactional
   @Override
   public void regist(BoardVO board) throws Exception {
+  
     dao.create(board);
+    
+    String[] files = board.getFiles();
+    
+    if(files == null) { return; } 
+    
+    for (String fileName : files) {
+      dao.addAttach(fileName);
+    }   
   }
+  
+  //
+//  @Override
+//  public void regist(BoardVO board) throws Exception {
+//    dao.create(board);
+//  }
 
 //  @Override
 //  public BoardVO read(Integer bno) throws Exception {
@@ -30,7 +47,6 @@ public class BoardServiceImpl implements BoardService {
 
 
   @Transactional(isolation=Isolation.READ_COMMITTED)
-  // Ä¿¹ÔµÈ ÀÐ±â
   @Override
   public BoardVO read(Integer bno) throws Exception {
     dao.updateViewCnt(bno);
@@ -38,15 +54,42 @@ public class BoardServiceImpl implements BoardService {
   }
 
   
+//  @Override
+//  public void modify(BoardVO board) throws Exception {
+//    dao.update(board);
+//  }
+  
+  @Transactional
   @Override
   public void modify(BoardVO board) throws Exception {
     dao.update(board);
+    
+    Integer bno = board.getBno();
+    
+    dao.deleteAttach(bno);
+    
+    String[] files = board.getFiles();
+    
+    if(files == null) { return; } 
+    
+    for (String fileName : files) {
+      dao.replaceAttach(fileName, bno);
+    }
   }
+  
 
+//  @Override
+//  public void remove(Integer bno) throws Exception {
+//    dao.delete(bno);
+//  }
+  
+  
+  @Transactional
   @Override
   public void remove(Integer bno) throws Exception {
+    dao.deleteAttach(bno);
     dao.delete(bno);
-  }
+  } 
 
   @Override
   public List<BoardVO> listAll() throws Exception {
@@ -76,5 +119,12 @@ public class BoardServiceImpl implements BoardService {
 
     return dao.listSearchCount(cri);
   }
+  
+
+  @Override
+  public List<String> getAttach(Integer bno) throws Exception {
+    
+    return dao.getAttach(bno);
+  }   
 
 }

@@ -18,7 +18,7 @@ public class MessageServiceImpl implements MessageService {
   private PointDAO pointDAO;
 
 
-  @Transactional
+  //@Transactional
   @Override
   public void addMessage(MessageVO vo) throws Exception {
 

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-// Aspect : 공통 기능이 있는 것, Aspect 클래스를 만듦
 public class SampleAdvice {
 
   private static final Logger logger = LoggerFactory.getLogger(SampleAdvice.class);
@@ -28,11 +27,10 @@ public class SampleAdvice {
   }
   
   
-  @Around("execution(* org.zerock.service.MessageService*.*(..))")
-  // MessageService*.*(..) : MessageService 객체의 모든 메소드에 적용하겠다.
+ // @Around("execution(* org.zerock.service.MessageService*.*(..))")
   public Object timeLog(ProceedingJoinPoint pjp)throws Throwable{
-	long startTime = System.currentTimeMillis();
-	logger.info("=============================================");
+    
+    long startTime = System.currentTimeMillis();
     logger.info(Arrays.toString(pjp.getArgs()));
     
     Object result = pjp.proceed();
