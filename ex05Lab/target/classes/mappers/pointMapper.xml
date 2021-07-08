@@ -8,7 +8,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<update id="updatePoint">
 		update tbl_user set upoint = upoint + #{point} where
 		uid = #{uid}
-<!-- 		uid = #{uid} -->
 	</update>
 
 </mapper>
