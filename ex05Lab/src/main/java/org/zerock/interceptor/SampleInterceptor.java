@@ -36,7 +36,7 @@ public class SampleInterceptor extends HandlerInterceptorAdapter {
 
 		if (result != null) {
 			System.out.println("result exists");
-			request.getSession().setAttribute("result", result);
+			request.getSession().setAttribute("result", "changed...");
 			response.sendRedirect("/doA");
 		}
 	}
