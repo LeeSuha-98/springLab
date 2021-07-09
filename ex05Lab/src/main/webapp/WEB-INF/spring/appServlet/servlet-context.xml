@@ -40,9 +40,9 @@
 		<beans:constructor-arg value="C:\\zzz\\upload">
 		</beans:constructor-arg>
 	</beans:bean>
-	
-	<!--  -->
-	
+
+	<!-- -->
+
 	<beans:bean id="sampleInterceptor"
 		class="org.zerock.interceptor.SampleInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor"
@@ -55,6 +55,10 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<interceptor>
+			<mapping path="/sboard/register" />
+			<mapping path="/sboard/modifyPage" />
+			<mapping path="/sboard/removePage" />
+			<mapping path="/sboard/list" />
 			<mapping path="/sboard/register" />
 			<mapping path="/sboard/modifyPage" />
 			<mapping path="/sboard/removePage" />

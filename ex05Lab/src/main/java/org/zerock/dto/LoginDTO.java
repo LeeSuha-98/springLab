@@ -2,9 +2,9 @@ package org.zerock.dto;
 
 public class LoginDTO {
 	
-	private String uid;
-	private String upw;
-	private boolean useCookie;
+	private String uid; //user00
+	private String upw; //user00
+	private boolean useCookie; //
 	
 	public String getUid() {
 		return uid;
